@@ -1,0 +1,15 @@
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\CreditCard.Application.deps.json
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\CreditCard.Application.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\CreditCard.Domain.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\CreditCard.Domain.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.csproj.AssemblyReference.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.AssemblyInfoInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.AssemblyInfo.cs
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.csproj.CoreCompileInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.csproj.CopyComplete
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\refint\CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\CreditCard.Application.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\ref\CreditCard.Application.dll
