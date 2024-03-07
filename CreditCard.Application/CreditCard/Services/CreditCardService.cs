@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BankTech.CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.Interfaces.CreditCard;
 using CreditCard.Domain.Entities;
@@ -29,7 +30,7 @@ namespace CreditCard.Application.CreditCard.Services
             return creditCard;
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             await _creditCardRepository.DeleteAsync(id);
         }
@@ -41,7 +42,7 @@ namespace CreditCard.Application.CreditCard.Services
             return creditCardList;
         }
 
-        public async Task<CreditCards> GetById(int id)
+        public async Task<CreditCards> GetById(Guid id)
         {
             var creditCard = await _creditCardRepository.GetByIdAsync(id);
 
@@ -61,7 +62,7 @@ namespace CreditCard.Application.CreditCard.Services
             return cr;
         }
 
-        public async Task Update(int id, CreditCardDto creditCardDto)
+        public async Task Update(Guid id, UpdateCreditCardDto creditCardDto)
         {
             CreditCards creditCards = await _creditCardRepository.GetByIdAsync(id);
 

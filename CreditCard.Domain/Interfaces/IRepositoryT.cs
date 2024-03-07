@@ -10,8 +10,8 @@ namespace CreditCard.Domain
     {
         Task<Entity> AddAsync(Entity entity);
         Task UpdateAsync(Entity entity);
-        Task DeleteAsync(int id);
-        Task<Entity> GetByIdAsync(int id);
+        Task DeleteAsync(Guid id);
+        Task<Entity> GetByIdAsync(Guid id);
         Task<List<Entity>> GetAllAsync();
     }
 }

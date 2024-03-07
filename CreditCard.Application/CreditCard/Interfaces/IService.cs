@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace CreditCard.Application.CreditCard.Interfaces
 {
-    public interface IService<Entity, EntityDto> where Entity : class
+    public interface IService<Entity, EntityDto, UpdateEntityDto> where Entity : class
         where EntityDto : class
+        where UpdateEntityDto : class
     {
         Task<Entity> Add(EntityDto entity);
-        Task Update(int id, EntityDto entity);
-        Task Delete(int id);
-        Task<Entity> GetById(int id);
+        Task Update(Guid id, UpdateEntityDto entity);
+        Task Delete(Guid id);
+        Task<Entity> GetById(Guid id);
         Task<List<Entity>> GetAll();
     }
 }

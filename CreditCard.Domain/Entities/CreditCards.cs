@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CreditCard.Domain.Entities
 {
-    public class CreditCards
+    public class CreditCards : BaseEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int ClientId { get; set; }
         public string OwnerName { get; set; }
         public long CardNumber { get; set; }

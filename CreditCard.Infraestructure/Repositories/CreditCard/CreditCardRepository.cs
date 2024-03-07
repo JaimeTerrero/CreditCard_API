@@ -26,7 +26,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return creditCards;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             var creditCards = await _creditCardDbContext.CreditCards.FindAsync(id);
             _creditCardDbContext.Set<CreditCards>().Remove(creditCards);
@@ -38,7 +38,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return await _creditCardDbContext.Set<CreditCards>().ToListAsync();
         }
 
-        public async Task<CreditCards> GetByIdAsync(int id)
+        public async Task<CreditCards> GetByIdAsync(Guid id)
         {
             return await _creditCardDbContext.Set<CreditCards>().FindAsync(id);
         }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankTech.CreditCard.Application.CreditCard.DTOs
 {
-    internal class UpdateCreditCardDto
+    public class UpdateCreditCardDto
     {
+        public DateTime CutoffDate { get; set; }
+        public long AvailableWithOverdraft { get; set; }
+        public long CreditLimit { get; set; }
     }
 }

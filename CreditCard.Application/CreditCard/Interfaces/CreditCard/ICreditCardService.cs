@@ -1,4 +1,5 @@
-﻿using CreditCard.Application.CreditCard.DTOs;
+﻿using BankTech.CreditCard.Application.CreditCard.DTOs;
+using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CreditCard.Application.CreditCard.Interfaces.CreditCard
 {
-    public interface ICreditCardService : IService<CreditCards, CreditCardDto>
+    public interface ICreditCardService : IService<CreditCards, CreditCardDto, UpdateCreditCardDto>
     {
     }
 }

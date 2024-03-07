@@ -11,7 +11,7 @@ namespace CreditCard.Infraestructure.Persistence.Context
 {
     public interface ICreditCardDbContext : IDbContext { }
 
-    public class CreditCardDbContext : DbContext
+    public class CreditCardDbContext : BaseDbContext
     {
         public CreditCardDbContext(DbContextOptions<CreditCardDbContext> options) : base(options) {}
 
@@ -19,17 +19,12 @@ namespace CreditCard.Infraestructure.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var assembly = Assembly.GetAssembly(typeof(CreditCardDbContext));
-
-            if(assembly is not null)
-            {
-                modelBuilder.ApplyConfigurationsFromAssembly(assembly);
-            }
+            base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.EnableSensitiveDataLogging();
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.EnableSensitiveDataLogging();
+        //}
     }
 }

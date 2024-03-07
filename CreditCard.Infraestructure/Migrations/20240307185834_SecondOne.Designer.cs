@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CreditCard.Infraestructure.Migrations
+namespace BankTech.CreditCard.Infraestructure.Migrations
 {
     [DbContext(typeof(CreditCardDbContext))]
-    [Migration("20240305211545_Initial")]
-    partial class Initial
+    [Migration("20240307185834_SecondOne")]
+    partial class SecondOne
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace CreditCard.Infraestructure.Migrations
 
             modelBuilder.Entity("CreditCard.Domain.Entities.CreditCards", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<long>("AvailableWithOverdraft")
                         .HasColumnType("bigint");
@@ -42,14 +40,29 @@ namespace CreditCard.Infraestructure.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<long>("CreditLimit")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CutoffDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("DeletedDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("IssuerName")
                         .IsRequired()
@@ -64,6 +77,12 @@ namespace CreditCard.Infraestructure.Migrations
 
                     b.Property<long>("SecurityNumber")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 

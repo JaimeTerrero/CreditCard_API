@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BankTech.CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Domain.Entities;
 using System;
@@ -14,6 +15,8 @@ namespace CreditCard.Infraestructure.Mappings
         public AutoMapperProfile()
         {
             CreateMap<CreditCardDto, CreditCards>();
+
+            CreateMap<UpdateCreditCardDto, CreditCards>();
         }
     }
 }
