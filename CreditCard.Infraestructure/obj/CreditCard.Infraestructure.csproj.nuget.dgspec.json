@@ -4,12 +4,12 @@
     "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\CreditCard.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj": {
+    "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj",
-        "projectName": "CreditCard.Application",
-        "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj",
+        "projectName": "BankTech.CreditCard.Application",
+        "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj",
         "packagesPath": "C:\\Users\\Jaime Terrero\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\obj\\",
         "projectStyle": "PackageReference",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj": {
-                "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj"
+              "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj": {
+                "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj"
               }
             }
           }
@@ -81,12 +81,12 @@
         }
       }
     },
-    "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj": {
+    "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj",
-        "projectName": "CreditCard.Domain",
-        "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj",
+        "projectName": "BankTech.CreditCard.Domain",
+        "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj",
         "packagesPath": "C:\\Users\\Jaime Terrero\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\obj\\",
         "projectStyle": "PackageReference",
@@ -160,8 +160,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj": {
-                "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj"
+              "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj": {
+                "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj"
               }
             }
           }

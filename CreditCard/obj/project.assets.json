@@ -1606,48 +1606,48 @@
           }
         }
       },
-      "CreditCard.Application/1.0.0": {
+      "BankTech.CreditCard.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "CreditCard.Domain": "1.0.0",
+          "BankTech.CreditCard.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.2",
           "Microsoft.Extensions.DependencyInjection": "8.0.0"
         },
         "compile": {
-          "bin/placeholder/CreditCard.Application.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CreditCard.Application.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Application.dll": {}
         }
       },
-      "CreditCard.Domain/1.0.0": {
+      "BankTech.CreditCard.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/CreditCard.Domain.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CreditCard.Domain.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Domain.dll": {}
         }
       },
-      "CreditCard.Infraestructure/1.0.0": {
+      "BankTech.CreditCard.Infraestructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "CreditCard.Application": "1.0.0",
+          "BankTech.CreditCard.Application": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.2"
         },
         "compile": {
-          "bin/placeholder/CreditCard.Infraestructure.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Infraestructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CreditCard.Infraestructure.dll": {}
+          "bin/placeholder/BankTech.CreditCard.Infraestructure.dll": {}
         }
       }
     }
@@ -4557,26 +4557,26 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "CreditCard.Application/1.0.0": {
+    "BankTech.CreditCard.Application/1.0.0": {
       "type": "project",
-      "path": "../CreditCard.Application/CreditCard.Application.csproj",
-      "msbuildProject": "../CreditCard.Application/CreditCard.Application.csproj"
+      "path": "../CreditCard.Application/BankTech.CreditCard.Application.csproj",
+      "msbuildProject": "../CreditCard.Application/BankTech.CreditCard.Application.csproj"
     },
-    "CreditCard.Domain/1.0.0": {
+    "BankTech.CreditCard.Domain/1.0.0": {
       "type": "project",
-      "path": "../CreditCard.Domain/CreditCard.Domain.csproj",
-      "msbuildProject": "../CreditCard.Domain/CreditCard.Domain.csproj"
+      "path": "../CreditCard.Domain/BankTech.CreditCard.Domain.csproj",
+      "msbuildProject": "../CreditCard.Domain/BankTech.CreditCard.Domain.csproj"
     },
-    "CreditCard.Infraestructure/1.0.0": {
+    "BankTech.CreditCard.Infraestructure/1.0.0": {
       "type": "project",
-      "path": "../CreditCard.Infraestructure/CreditCard.Infraestructure.csproj",
-      "msbuildProject": "../CreditCard.Infraestructure/CreditCard.Infraestructure.csproj"
+      "path": "../CreditCard.Infraestructure/BankTech.CreditCard.Infraestructure.csproj",
+      "msbuildProject": "../CreditCard.Infraestructure/BankTech.CreditCard.Infraestructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CreditCard.Application >= 1.0.0",
-      "CreditCard.Infraestructure >= 1.0.0",
+      "BankTech.CreditCard.Application >= 1.0.0",
+      "BankTech.CreditCard.Infraestructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.2",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -4587,9 +4587,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard\\CreditCard.Api.csproj",
-      "projectName": "CreditCard.Api",
-      "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard\\CreditCard.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard\\BankTech.CreditCard.Api.csproj",
+      "projectName": "BankTech.CreditCard.Api",
+      "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard\\BankTech.CreditCard.Api.csproj",
       "packagesPath": "C:\\Users\\Jaime Terrero\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard\\obj\\",
       "projectStyle": "PackageReference",
@@ -4608,11 +4608,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj": {
-              "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\CreditCard.Application.csproj"
+            "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj": {
+              "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj"
             },
-            "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\CreditCard.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\CreditCard.Infraestructure.csproj"
+            "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\BankTech.CreditCard.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\BankTech.CreditCard.Infraestructure.csproj"
             }
           }
         }

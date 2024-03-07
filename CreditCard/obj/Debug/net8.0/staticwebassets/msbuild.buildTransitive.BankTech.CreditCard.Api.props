@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\BankTech.CreditCard.Api.props" />
+</Project>

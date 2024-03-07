@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj",
-      "projectName": "CreditCard.Domain",
-      "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj",
+      "projectName": "BankTech.CreditCard.Domain",
+      "projectPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj",
       "packagesPath": "C:\\Users\\Jaime Terrero\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\obj\\",
       "projectStyle": "PackageReference",

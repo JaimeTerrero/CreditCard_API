@@ -1,0 +1,12 @@
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\bin\Debug\net8.0\BankTech.CreditCard.Domain.deps.json
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\bin\Debug\net8.0\BankTech.CreditCard.Domain.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\bin\Debug\net8.0\BankTech.CreditCard.Domain.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.AssemblyInfoInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.AssemblyInfo.cs
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.sourcelink.json
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\refint\BankTech.CreditCard.Domain.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\BankTech.CreditCard.Domain.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Domain\obj\Debug\net8.0\ref\BankTech.CreditCard.Domain.dll

@@ -1,0 +1,16 @@
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\BankTech.CreditCard.Application.deps.json
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\BankTech.CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\BankTech.CreditCard.Application.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\BankTech.CreditCard.Domain.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\bin\Debug\net8.0\BankTech.CreditCard.Domain.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.csproj.AssemblyReference.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.AssemblyInfoInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.AssemblyInfo.cs
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.csproj.CoreCompileInputs.cache
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.sourcelink.json
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.csproj.CopyComplete
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\refint\BankTech.CreditCard.Application.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\BankTech.CreditCard.Application.pdb
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard.Application\obj\Debug\net8.0\ref\BankTech.CreditCard.Application.dll

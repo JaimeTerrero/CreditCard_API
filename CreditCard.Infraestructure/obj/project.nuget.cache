@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8awpv9FcvW7Z8xvaiB4lFoOG7oBHC4W7RCsYqvOYhNLirVlKEzLnf7ewh8qgW2VR1dBSFqALJiIGqn3k0p/dFA==",
+  "dgSpecHash": "zK7q2J9lvSrCm1zLrVXhIUYFnh1ux2gDFTow+XqnuVXFrcjU8jhV45k8C0ftVJMqX8exZnjfvPWmTNfrFVd7AQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\CreditCard.Infraestructure.csproj",
+  "projectFilePath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Infraestructure\\BankTech.CreditCard.Infraestructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hCa4k3MnfouPXjfqS+HkPBuhq9uxkdChUFbndC92PobdnGLJ1uPUiVWcSc8JlozrME/1KNwEdaitfyhSFdmEng==",
+  "dgSpecHash": "wIamWQ6VilEYN2MSyCPORaF1jeINbaVf7u0q29CdBUjEmkYvuRz+lMrEVjEPE9b+Zkmh+0h1DNL8pAQxFLlvIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\CreditCard.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Domain\\BankTech.CreditCard.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

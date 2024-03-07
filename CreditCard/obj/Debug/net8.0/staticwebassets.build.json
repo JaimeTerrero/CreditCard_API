@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "dNZ9nuJXAjDTs0ZOFzHl2kTbpm2EuIMydiEEeBEA6VY=",
-  "Source": "CreditCard.Api",
-  "BasePath": "_content/CreditCard.Api",
+  "Hash": "1wB+Cjt8o6HZGqCnBsU2Rv7IYqBMGWzi8ikNhl9vQl4=",
+  "Source": "BankTech.CreditCard.Api",
+  "BasePath": "_content/BankTech.CreditCard.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
