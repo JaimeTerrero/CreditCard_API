@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using CreditCard.Infraestructure.IoC;
 using CreditCard.Application.IoC;
 using System.Reflection;
+using FluentValidation;
+using CreditCard.Application.CreditCard.DTOs;
+using BankTech.CreditCard.Application.CreditCard.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 

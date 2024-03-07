@@ -143,3 +143,6 @@ C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\obj\Debug\net8.0\r
 C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\obj\Debug\net8.0\BankTech.CreditCard.Api.pdb
 C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\obj\Debug\net8.0\BankTech.CreditCard.Api.genruntimeconfig.cache
 C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\obj\Debug\net8.0\ref\BankTech.CreditCard.Api.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Jaime Terrero\Desktop\BankTech\CreditCard\CreditCard\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
