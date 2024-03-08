@@ -6,6 +6,8 @@ using System.Reflection;
 using FluentValidation;
 using CreditCard.Application.CreditCard.DTOs;
 using BankTech.CreditCard.Application.CreditCard.Validators;
+using FluentValidation.AspNetCore;
+using BankTech.CreditCard.Application.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CreditCardDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// FluentValidation
+FluentValidationConfig.AddFluentValidation(builder.Services);
+
 // Add services to the container
 builder.Services
     .AddRepositories()
@@ -28,6 +33,8 @@ builder.Services
 // For the AutoMapper Configuration
 var mapperAssembly = Assembly.Load("BankTech.CreditCard.Infraestructure");
 builder.Services.AddAutoMapper(mapperAssembly);
+
+
 
 var app = builder.Build();
 

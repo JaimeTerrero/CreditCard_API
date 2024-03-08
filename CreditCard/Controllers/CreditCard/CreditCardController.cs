@@ -1,7 +1,9 @@
 ﻿using BankTech.CreditCard.Application.CreditCard.DTOs;
+using BankTech.CreditCard.Application.CreditCard.Validators;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.Interfaces.CreditCard;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BankTech.CreditCard.Api.Controllers.CreditCard
 {
@@ -26,6 +28,22 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
         [HttpPost("CreateCreditCard")]
         public async Task<ActionResult> CreateCreditCard(CreditCardDto creditCardDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.Values);
+            
+            //var validator = new CreditCardValidators(); // Crea una instancia del validador
+            //var validationResult = validator.Validate(creditCardDto);
+
+            //if (!validationResult.IsValid)
+            //{
+            //    foreach (var error in validationResult.Errors)
+            //    {
+            //        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            //    }
+            //    return BadRequest(ModelState);
+            //}
+
+
             var creditCard = await _creditCardService.Add(creditCardDto);
 
             return Ok(creditCard);

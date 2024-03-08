@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0seXLgejaaOPZZUlVyItDin8bRMUOU7pSonSbo87hIy29fUYlS+vu2RFxnIpyhGMbvXy5es2OMzV/Rf97VHOvg==",
+  "dgSpecHash": "bQ2MXGgHpMVc4GI/rf6ESbQKpYekgcbUHZjUfXSuZzxbZCDVaWBiU3A0Wvl38WQ9D1uqDkMPdu6Uaupl792VyA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jaime Terrero\\Desktop\\BankTech\\CreditCard\\CreditCard.Application\\BankTech.CreditCard.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\Jaime Terrero\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Jaime Terrero\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.2\\microsoft.entityframeworkcore.8.0.2.nupkg.sha512",
