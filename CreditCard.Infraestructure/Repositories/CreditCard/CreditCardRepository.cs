@@ -21,6 +21,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public async Task<CreditCards> AddAsync(CreditCards creditCards)
         {
+            creditCards.AvailableWithOverdraft = CalculateAvailableWithOverdraft(creditCards.CreditLimit);
             await _creditCardDbContext.CreditCards.AddAsync(creditCards);
             await _creditCardDbContext.SaveChangesAsync();
             return creditCards;
@@ -47,6 +48,14 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
         {
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
             await _creditCardDbContext.SaveChangesAsync();
+        }
+
+        public long CalculateAvailableWithOverdraft(long availableWithOverdraft)
+        {
+            double overdraftPercentage = 0.10; // 10% expressed as a decimal
+            long overdraftAmount = (long)(availableWithOverdraft * overdraftPercentage);
+            long overdraftSum = overdraftAmount + availableWithOverdraft;
+            return overdraftSum;
         }
     }
 }

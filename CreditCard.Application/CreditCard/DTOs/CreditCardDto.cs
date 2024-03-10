@@ -14,7 +14,6 @@ namespace CreditCard.Application.CreditCard.DTOs
         public DateTime ExpirationDate { get; set; }
         public DateTime CutoffDate { get; set; }
         public DateTime PaymentDueDate { get; set; }
-        public long AvailableWithOverdraft { get; set; }
         public long SecurityNumber { get; set; }
         public string IssuerName { get; set; }
         public long CreditLimit { get; set; }

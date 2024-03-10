@@ -30,7 +30,7 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.Values);
-            
+
             //var validator = new CreditCardValidators(); // Crea una instancia del validador
             //var validationResult = validator.Validate(creditCardDto);
 

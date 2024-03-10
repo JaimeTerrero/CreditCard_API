@@ -32,17 +32,15 @@ namespace BankTech.CreditCard.Application.CreditCard.Validators
                 .NotEmpty()
                 .WithMessage("La fecha de vencimiento de pago es obligatoria");
 
-            RuleFor(x => x.AvailableWithOverdraft)
-                .NotEmpty()
-                .WithMessage("El monto disponible con sobregiro es obligatorio");
+            //RuleFor(x => x.AvailableWithOverdraft)
+            //    .NotEmpty()
+            //    .WithMessage("El monto disponible con sobregiro es obligatorio");
 
             RuleFor(x => x.SecurityNumber)
                 .NotEmpty()
                 .WithMessage("El número de seguridad es obligatorio")
                 .GreaterThan(0)
-                .WithMessage("El número de seguridad debe de ser mayor que 0")
-                .LessThan(5)
-                .WithMessage("El número de seguridad debe de ser menor que 5");
+                .WithMessage("El número de seguridad debe de ser mayor que 0");
 
             RuleFor(x => x.IssuerName)
                 .NotEmpty()
