@@ -1,4 +1,5 @@
-﻿using CreditCard.Domain.Entities;
+﻿using BankTech.CreditCard.Domain.Entities;
+using CreditCard.Domain.Entities;
 using CreditCard.Domain.Interfaces.Repositories.CreditCard;
 using CreditCard.Infraestructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,38 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             long overdraftAmount = (long)(availableWithOverdraft * overdraftPercentage);
             long overdraftSum = overdraftAmount + availableWithOverdraft;
             return overdraftSum;
+        }
+
+        public async Task<List<CreditCards>> GetAllWithPaginationAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        {
+            return await _creditCardDbContext.Set<CreditCards>()
+                .Where(x => !x.IsDeleted)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<Paginated<CreditCards>> GetCreditCardsPaginatedAsync(IQueryable<CreditCards> queryable, int page, int pageSize)
+        {
+            var totalItems = await queryable.CountAsync();
+
+            var paginatedItems = await queryable
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new Paginated<CreditCards>
+            {
+                Items = paginatedItems,
+                TotalItems = totalItems,
+                PageSize = pageSize,
+                CurrentPage = page
+            };
+        }
+
+        public IQueryable<CreditCards> GetAllCreditCardsQueryable()
+        {
+            return _creditCardDbContext.Set<CreditCards>();
         }
     }
 }

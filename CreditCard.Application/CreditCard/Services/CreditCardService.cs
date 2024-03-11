@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using BankTech.CreditCard.Application.CreditCard.DTOs;
+using BankTech.CreditCard.Domain.Entities;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.Interfaces.CreditCard;
+using CreditCard.Domain;
 using CreditCard.Domain.Entities;
 using CreditCard.Domain.Interfaces.Repositories.CreditCard;
 using System;
@@ -70,5 +72,24 @@ namespace CreditCard.Application.CreditCard.Services
 
             await _creditCardRepository.UpdateAsync(creditCards);
         }
+
+        public async Task<Paginated<GetCreditCardDto>> GetPaginatedCreditCardsAsync(int page, int pageSize)
+        {
+            IQueryable<CreditCards> queryable = _creditCardRepository.GetAllCreditCardsQueryable();
+            Paginated<CreditCards> paginatedResult = await _creditCardRepository.GetCreditCardsPaginatedAsync(queryable, page, pageSize);
+
+            List<GetCreditCardDto> result = paginatedResult.Items != null
+                ? paginatedResult.Items.Select(st => _mapper.Map<GetCreditCardDto>(st)).ToList() :
+                [];
+
+            return new Paginated<GetCreditCardDto>
+            {
+                Items = result,
+                TotalItems = paginatedResult.TotalItems,
+                PageSize = pageSize,
+                CurrentPage = page
+            };
+        }
+
     }
 }

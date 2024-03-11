@@ -1,5 +1,6 @@
 ﻿using BankTech.CreditCard.Application.CreditCard.DTOs;
 using BankTech.CreditCard.Application.CreditCard.Validators;
+using BankTech.CreditCard.Domain.Entities;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Application.CreditCard.Interfaces.CreditCard;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,26 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
         public CreditCardController(ICreditCardService creditCardService)
         {
             _creditCardService = creditCardService;
+        }
+
+        [HttpGet("paginated/creditcards")]
+        public async Task<IActionResult> GetAllCustomersPaged(int page, int pageSize)
+        {
+            try
+            {
+                Paginated<GetCreditCardDto> paginatedResult = await _creditCardService.GetPaginatedCreditCardsAsync(page, pageSize);
+
+                if (paginatedResult.Items == null)
+                {
+                    return NotFound("No Credit Cards were found");
+                }
+
+                return Ok(paginatedResult);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpGet("GetAllCreditCards")]

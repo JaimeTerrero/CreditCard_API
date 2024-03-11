@@ -1,4 +1,5 @@
 ﻿using BankTech.CreditCard.Application.CreditCard.DTOs;
+using BankTech.CreditCard.Domain.Entities;
 using CreditCard.Application.CreditCard.DTOs;
 using CreditCard.Domain.Entities;
 using System;
@@ -11,5 +12,6 @@ namespace CreditCard.Application.CreditCard.Interfaces.CreditCard
 {
     public interface ICreditCardService : IService<CreditCards, CreditCardDto, UpdateCreditCardDto>
     {
+        Task<Paginated<GetCreditCardDto>> GetPaginatedCreditCardsAsync(int page, int pageSize);
     }
 }
