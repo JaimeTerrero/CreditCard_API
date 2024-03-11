@@ -4,6 +4,7 @@ using CreditCard.Infraestructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankTech.CreditCard.Infraestructure.Migrations
 {
     [DbContext(typeof(CreditCardDbContext))]
-    partial class CreditCardDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311202748_CashAdvancedAdded")]
+    partial class CashAdvancedAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

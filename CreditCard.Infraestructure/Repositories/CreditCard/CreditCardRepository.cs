@@ -59,15 +59,6 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return overdraftSum;
         }
 
-        public async Task<List<CreditCards>> GetAllWithPaginationAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
-        {
-            return await _creditCardDbContext.Set<CreditCards>()
-                .Where(x => !x.IsDeleted)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync(cancellationToken);
-        }
-
         public async Task<Paginated<CreditCards>> GetCreditCardsPaginatedAsync(IQueryable<CreditCards> queryable, int page, int pageSize)
         {
             var totalItems = await queryable.CountAsync();
@@ -89,6 +80,12 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
         public IQueryable<CreditCards> GetAllCreditCardsQueryable()
         {
             return _creditCardDbContext.Set<CreditCards>();
+        }
+
+        public async Task TransferCashAdvance(CreditCards creditCards)
+        {
+            _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
+            await _creditCardDbContext.SaveChangesAsync();
         }
     }
 }

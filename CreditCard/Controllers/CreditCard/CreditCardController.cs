@@ -46,6 +46,14 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             return Ok(creditCard);
         }
 
+        [HttpPut("TransferCashAdvance/{id}")]
+        public async Task<ActionResult> TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity)
+        {
+            await _creditCardService.TransferCashAdvance(id, entity);
+
+            return NoContent();
+        }
+
         [HttpPost("CreateCreditCard")]
         public async Task<ActionResult> CreateCreditCard(CreditCardDto creditCardDto)
         {

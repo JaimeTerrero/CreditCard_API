@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankTech.CreditCard.Application.CreditCard.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace CreditCard.Application.CreditCard.Interfaces
         Task Delete(Guid id);
         Task<Entity> GetById(Guid id);
         Task<List<Entity>> GetAll();
+        Task TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity);
     }
 }

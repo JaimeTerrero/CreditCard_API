@@ -9,6 +9,7 @@ namespace CreditCard.Application.CreditCard.DTOs
     public class CreditCardDto
     {
         public int ClientId { get; set; }
+        public long AccountNumber { get; set; }
         public string OwnerName { get; set; }
         public long CardNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
@@ -17,5 +18,6 @@ namespace CreditCard.Application.CreditCard.DTOs
         public long SecurityNumber { get; set; }
         public string IssuerName { get; set; }
         public long CreditLimit { get; set; }
+        public long CashAdvance { get; set; }
     }
 }

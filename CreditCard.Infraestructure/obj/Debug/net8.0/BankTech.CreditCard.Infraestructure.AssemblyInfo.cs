@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankTech.CreditCard.Infraestructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bef6544cd5a618d919d8e3c800135545b54327fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5df7f10d1668f4ad2b96465934ccb34c75457341")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankTech.CreditCard.Infraestructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankTech.CreditCard.Infraestructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

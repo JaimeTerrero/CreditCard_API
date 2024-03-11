@@ -91,5 +91,27 @@ namespace CreditCard.Application.CreditCard.Services
             };
         }
 
+        public async Task TransferCashAdvance(Guid id, CreditCardCashAdvanceDto creditCardCashAdvanceDto)
+        {
+            var creditCard = await _creditCardRepository.GetByIdAsync(id);
+
+            if(creditCard == null)
+            {
+                throw new Exception("Tarjeta de crédito no encontrada");
+            }
+
+            // Verifica si el avance de efectivo es menor o igual al límite de crédito
+            if (creditCardCashAdvanceDto.CashAdvance > creditCard.CreditLimit)
+            {
+                throw new Exception("El avance de efectivo excede el límite de crédito");
+            }
+
+            // Actualiza el avance de efectivo y el límite de crédito
+            creditCard.CashAdvance += creditCardCashAdvanceDto.CashAdvance;
+            creditCard.CreditLimit -= creditCardCashAdvanceDto.CashAdvance;
+
+            // Guarda los cambios en la base de datos
+            await _creditCardRepository.TransferCashAdvance(creditCard);
+        }
     }
 }
