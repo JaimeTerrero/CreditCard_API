@@ -13,5 +13,6 @@ namespace CreditCard.Application.CreditCard.Interfaces.CreditCard
     public interface ICreditCardService : IService<CreditCards, CreditCardDto, UpdateCreditCardDto>
     {
         Task<Paginated<GetCreditCardDto>> GetPaginatedCreditCardsAsync(int page, int pageSize);
+        Task<List<CreditCards>> GetByClientId(int clientId);
     }
 }

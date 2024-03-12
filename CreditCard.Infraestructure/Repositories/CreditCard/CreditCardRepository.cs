@@ -22,6 +22,11 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public async Task<CreditCards> AddAsync(CreditCards creditCards)
         {
+            creditCards.CardNumber = GenerateCreditCardNumber();
+            creditCards.SecurityNumber = GenerateCVV();
+            creditCards.CutoffDate = GenerateNextMonthCutoffDate();
+            creditCards.PaymentDueDate = GeneratePaymentDueDate();
+            creditCards.ExpirationDate = GenerateExpirationDate();
             creditCards.AvailableWithOverdraft = CalculateAvailableWithOverdraft(creditCards.CreditLimit);
             await _creditCardDbContext.CreditCards.AddAsync(creditCards);
             await _creditCardDbContext.SaveChangesAsync();
@@ -87,5 +92,86 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
             await _creditCardDbContext.SaveChangesAsync();
         }
+
+        public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
+        {
+            return await _creditCardDbContext.Set<CreditCards>().Where(c => c.ClientId == clientId).ToListAsync();
+        }
+
+        public static long GenerateCreditCardNumber()
+        {
+            Random random = new Random();
+            long creditCardNumber = 0;
+
+            for (int i = 1; i < 16; i++)
+            {
+                // Genera un dígito aleatorio en el rango del 1 al 100
+                int digit = random.Next(1, 101);
+                creditCardNumber = creditCardNumber * 10 + digit;
+            }
+
+            return creditCardNumber;
+        }
+
+        public static long GenerateCVV()
+        {
+            Random random = new Random();
+            long cvvNumber = 0;
+
+            for (int i = 1; i < 3; i++)
+            {
+                // Genera un dígito aleatorio en el rango del 1 al 100
+                int digit = random.Next(1, 101);
+                cvvNumber = cvvNumber * 10 + digit;
+            }
+
+            return cvvNumber;
+        }
+
+        public DateTime GenerateNextMonthCutoffDate()
+        {
+            // Obtener la fecha actual
+            DateTime currentDate = DateTime.Now;
+
+            // Calcular el próximo mes
+            DateTime nextMonth = currentDate.AddMonths(1);
+
+            // Establecer la fecha de corte en el mismo día del próximo mes
+            DateTime statementCutoffDate = new DateTime(nextMonth.Year, nextMonth.Month, currentDate.Day);
+
+            return statementCutoffDate;
+        }
+
+        public static DateTime GeneratePaymentDueDate()
+        {
+            // Obtener la fecha actual
+            DateTime currentDate = DateTime.Now;
+
+            // Calcular el próximo mes
+            DateTime nextMonth = currentDate.AddMonths(1);
+
+            // Establecer la fecha de corte en el mismo día del próximo mes
+            DateTime statementPaymentDueDate = new DateTime(nextMonth.Year, nextMonth.Month, currentDate.Day);
+
+            // Sumar 20 días adicionales
+            statementPaymentDueDate = statementPaymentDueDate.AddDays(20);
+
+            return statementPaymentDueDate;
+        }
+
+        public DateTime GenerateExpirationDate()
+        {
+            // Obtener la fecha actual
+            DateTime currentDate = DateTime.Now;
+
+            // Calcular el próximo año
+            DateTime nextYear = currentDate.AddYears(4);
+
+            // Establecer la fecha de corte en el mismo día del próximo mes
+            DateTime statementExpirationDate = new DateTime(nextYear.Year, nextYear.Month, currentDate.Day);
+
+            return statementExpirationDate;
+        }
+
     }
 }

@@ -16,31 +16,31 @@ namespace BankTech.CreditCard.Application.CreditCard.Validators
                 .NotEmpty()
                 .WithMessage("El nombre es obligatorio");
 
-            RuleFor(x => x.CardNumber)
-                .NotEmpty()
-                .WithMessage("El número de la tarjeta es obligatorio");
+            //RuleFor(x => x.CardNumber)
+            //    .NotEmpty()
+            //    .WithMessage("El número de la tarjeta es obligatorio");
 
-            RuleFor(x => x.ExpirationDate)
-                .NotEmpty()
-                .WithMessage("La fecha de expiración es obligatoria");
+            //RuleFor(x => x.ExpirationDate)
+            //    .NotEmpty()
+            //    .WithMessage("La fecha de expiración es obligatoria");
 
-            RuleFor(x => x.CutoffDate)
-                .NotEmpty()
-                .WithMessage("La fecha de corte es obligatoria");
+            //RuleFor(x => x.CutoffDate)
+            //    .NotEmpty()
+            //    .WithMessage("La fecha de corte es obligatoria");
 
-            RuleFor(x => x.PaymentDueDate)
-                .NotEmpty()
-                .WithMessage("La fecha de vencimiento de pago es obligatoria");
+            //RuleFor(x => x.PaymentDueDate)
+            //    .NotEmpty()
+            //    .WithMessage("La fecha de vencimiento de pago es obligatoria");
 
             //RuleFor(x => x.AvailableWithOverdraft)
             //    .NotEmpty()
             //    .WithMessage("El monto disponible con sobregiro es obligatorio");
 
-            RuleFor(x => x.SecurityNumber)
-                .NotEmpty()
-                .WithMessage("El número de seguridad es obligatorio")
-                .GreaterThan(0)
-                .WithMessage("El número de seguridad debe de ser mayor que 0");
+            //RuleFor(x => x.SecurityNumber)
+            //    .NotEmpty()
+            //    .WithMessage("El número de seguridad es obligatorio")
+            //    .GreaterThan(0)
+            //    .WithMessage("El número de seguridad debe de ser mayor que 0");
 
             RuleFor(x => x.IssuerName)
                 .NotEmpty()

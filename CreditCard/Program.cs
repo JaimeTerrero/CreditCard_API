@@ -30,6 +30,18 @@ builder.Services
     .AddRepositories()
     .AddService();
 
+// For the CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 // For the AutoMapper Configuration
 var mapperAssembly = Assembly.Load("BankTech.CreditCard.Infraestructure");
 builder.Services.AddAutoMapper(mapperAssembly);
@@ -37,6 +49,8 @@ builder.Services.AddAutoMapper(mapperAssembly);
 
 
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -47,8 +61,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// CORS
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseAuthorization();
 

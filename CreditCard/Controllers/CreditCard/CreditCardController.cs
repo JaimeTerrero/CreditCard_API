@@ -86,6 +86,19 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             return Ok(creditCard);
         }
 
+        [HttpGet("GetCreditCardByClientId/{clientId:int}")]
+        public async Task<ActionResult> GetCreditCardByClientId(int clientId)
+        {
+            var creditCard = await _creditCardService.GetByClientId(clientId);
+
+            if(creditCard == null)
+            {
+                return NotFound("No hay ningún cliente con ese Id");
+            }
+
+            return Ok(creditCard);
+        }
+
         [HttpPut("UpdateCreditCard/{id}")]
         public async Task<ActionResult> UpdateCreditCard(Guid id, UpdateCreditCardDto creditCardDto)
         {

@@ -14,5 +14,6 @@ namespace CreditCard.Domain.Interfaces.Repositories.CreditCard
         Task<Paginated<CreditCards>> GetCreditCardsPaginatedAsync(IQueryable<CreditCards> queryable, int page, int pageSize);
         IQueryable<CreditCards> GetAllCreditCardsQueryable();
         Task TransferCashAdvance(CreditCards creditCards);
+        Task<List<CreditCards>> GetCreditCardByClientId(int clientId);
     }
 }

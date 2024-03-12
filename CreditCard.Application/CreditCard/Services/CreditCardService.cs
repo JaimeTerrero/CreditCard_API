@@ -51,6 +51,7 @@ namespace CreditCard.Application.CreditCard.Services
             CreditCards cr = new();
             cr.Id = creditCard.Id;
             cr.ClientId = creditCard.ClientId;
+            cr.AccountNumber = creditCard.AccountNumber;
             cr.OwnerName = creditCard.OwnerName;
             cr.CardNumber = creditCard.CardNumber;
             cr.ExpirationDate = creditCard.ExpirationDate;
@@ -113,5 +114,34 @@ namespace CreditCard.Application.CreditCard.Services
             // Guarda los cambios en la base de datos
             await _creditCardRepository.TransferCashAdvance(creditCard);
         }
+
+        public async Task<List<CreditCards>> GetByClientId(int clientId)
+        {
+            var creditCards = await _creditCardRepository.GetCreditCardByClientId(clientId);
+
+            List<CreditCards> creditCardsList = new List<CreditCards>();
+
+            foreach (var creditCard in creditCards)
+            {
+                CreditCards cr = new();
+                cr.Id = creditCard.Id;
+                cr.ClientId = creditCard.ClientId;
+                cr.AccountNumber = creditCard.AccountNumber;
+                cr.OwnerName = creditCard.OwnerName;
+                cr.CardNumber = creditCard.CardNumber;
+                cr.ExpirationDate = creditCard.ExpirationDate;
+                cr.CutoffDate = creditCard.CutoffDate;
+                cr.PaymentDueDate = creditCard.PaymentDueDate;
+                cr.AvailableWithOverdraft = creditCard.AvailableWithOverdraft;
+                cr.SecurityNumber = creditCard.SecurityNumber;
+                cr.IssuerName = creditCard.IssuerName;
+                cr.CreditLimit = creditCard.CreditLimit;
+
+                creditCardsList.Add(cr);
+            }
+
+            return creditCardsList;
+        }
+
     }
 }
