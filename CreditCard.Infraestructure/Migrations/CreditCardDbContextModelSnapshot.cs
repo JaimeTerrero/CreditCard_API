@@ -34,6 +34,9 @@ namespace BankTech.CreditCard.Infraestructure.Migrations
                     b.Property<long>("AvailableWithOverdraft")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("BalanceToDate")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("CardNumber")
                         .HasColumnType("bigint");
 
@@ -71,6 +74,9 @@ namespace BankTech.CreditCard.Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("OriginalValue")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("OwnerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -80,6 +86,9 @@ namespace BankTech.CreditCard.Infraestructure.Migrations
 
                     b.Property<long>("SecurityNumber")
                         .HasColumnType("bigint");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");

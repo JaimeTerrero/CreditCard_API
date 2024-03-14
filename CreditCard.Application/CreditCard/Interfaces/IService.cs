@@ -12,7 +12,7 @@ namespace CreditCard.Application.CreditCard.Interfaces
         where UpdateEntityDto : class
     {
         Task<Entity> Add(EntityDto entity);
-        Task Update(Guid id, UpdateEntityDto entity);
+        Task Update(Guid id, UpdateEntityDto entity, CancellationToken cancellationToken);
         Task Delete(Guid id);
         Task<Entity> GetById(Guid id);
         Task<List<Entity>> GetAll();

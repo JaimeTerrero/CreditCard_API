@@ -20,40 +20,48 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             _creditCardDbContext = creditCardDbContext;
         }
 
-        public async Task<CreditCards> AddAsync(CreditCards creditCards)
+        public async Task<CreditCards> AddAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
+            creditCards.OriginalValue = creditCards.CreditLimit;
+            //creditCards.BalanceToDate = creditCards.CreditLimit;
             creditCards.CardNumber = GenerateCreditCardNumber();
             creditCards.SecurityNumber = GenerateCVV();
             creditCards.CutoffDate = GenerateNextMonthCutoffDate();
             creditCards.PaymentDueDate = GeneratePaymentDueDate();
             creditCards.ExpirationDate = GenerateExpirationDate();
             creditCards.AvailableWithOverdraft = CalculateAvailableWithOverdraft(creditCards.CreditLimit);
-            await _creditCardDbContext.CreditCards.AddAsync(creditCards);
-            await _creditCardDbContext.SaveChangesAsync();
+            await _creditCardDbContext.CreditCards.AddAsync(creditCards, cancellationToken);
+            await _creditCardDbContext.SaveChangesAsync(cancellationToken);
             return creditCards;
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            var creditCards = await _creditCardDbContext.CreditCards.FindAsync(id);
+            var creditCards = await _creditCardDbContext.CreditCards.FindAsync(id, cancellationToken);
+            if (creditCards == null)
+            {
+                return;
+            }
+
             _creditCardDbContext.Set<CreditCards>().Remove(creditCards);
-            await _creditCardDbContext.SaveChangesAsync();
+            await _creditCardDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<List<CreditCards>> GetAllAsync()
+
+        public async Task<List<CreditCards>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await _creditCardDbContext.Set<CreditCards>().ToListAsync();
+            return await _creditCardDbContext.Set<CreditCards>().ToListAsync(cancellationToken);
         }
 
-        public async Task<CreditCards> GetByIdAsync(Guid id)
+        public async Task<CreditCards> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await _creditCardDbContext.Set<CreditCards>().FindAsync(id);
+            return await _creditCardDbContext.Set<CreditCards>().FindAsync(id, cancellationToken);
         }
 
-        public async Task UpdateAsync(CreditCards creditCards)
+        public async Task UpdateAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
-            await _creditCardDbContext.SaveChangesAsync();
+            await _creditCardDbContext.SaveChangesAsync(cancellationToken);
         }
 
         public long CalculateAvailableWithOverdraft(long availableWithOverdraft)
@@ -87,10 +95,10 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return _creditCardDbContext.Set<CreditCards>();
         }
 
-        public async Task TransferCashAdvance(CreditCards creditCards)
+        public async Task TransferCashAdvance(CreditCards creditCards, CancellationToken cancellationToken)
         {
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
-            await _creditCardDbContext.SaveChangesAsync();
+            await _creditCardDbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
@@ -105,7 +113,6 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
             for (int i = 1; i < 16; i++)
             {
-                // Genera un dígito aleatorio en el rango del 1 al 100
                 int digit = random.Next(1, 101);
                 creditCardNumber = creditCardNumber * 10 + digit;
             }

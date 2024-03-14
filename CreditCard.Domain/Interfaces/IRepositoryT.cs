@@ -8,10 +8,10 @@ namespace CreditCard.Domain
 {
     public interface IRepositoryT<Entity> where Entity : class
     {
-        Task<Entity> AddAsync(Entity entity);
-        Task UpdateAsync(Entity entity);
-        Task DeleteAsync(Guid id);
-        Task<Entity> GetByIdAsync(Guid id);
-        Task<List<Entity>> GetAllAsync();
+        Task<Entity> AddAsync(Entity entity, CancellationToken cancellationToken = default);
+        Task UpdateAsync(Entity entity, CancellationToken cancellationToken);
+        Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Entity> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<List<Entity>> GetAllAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -8,8 +8,7 @@ namespace BankTech.CreditCard.Application.CreditCard.DTOs
 {
     public class CreditCardCashAdvanceDto
     {
-        public long AccountNumber { get; set; }
-        public long CreditLimit { get; set; }
-        public long CashAdvance { get; set; }
+        public long AccountNumber { get; set; } //Cuenta a la que se va a transferir
+        public long CashAdvance { get; set; } //Monto que se va a transferir
     }
 }

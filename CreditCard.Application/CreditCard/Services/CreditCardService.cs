@@ -48,6 +48,11 @@ namespace CreditCard.Application.CreditCard.Services
         {
             var creditCard = await _creditCardRepository.GetByIdAsync(id);
 
+            if(creditCard == null)
+            {
+                throw new Exception("Tarjeta de crédito no encontrada");
+            }
+
             CreditCards cr = new();
             cr.Id = creditCard.Id;
             cr.ClientId = creditCard.ClientId;
@@ -61,17 +66,20 @@ namespace CreditCard.Application.CreditCard.Services
             cr.SecurityNumber = creditCard.SecurityNumber;
             cr.IssuerName = creditCard.IssuerName;
             cr.CreditLimit = creditCard.CreditLimit;
+            cr.CashAdvance = creditCard.CashAdvance;
+            cr.BalanceToDate = creditCard.BalanceToDate;
+            cr.OriginalValue = creditCard.OriginalValue;
 
             return cr;
         }
 
-        public async Task Update(Guid id, UpdateCreditCardDto creditCardDto)
+        public async Task Update(Guid id, UpdateCreditCardDto creditCardDto, CancellationToken cancellationToken)
         {
             CreditCards creditCards = await _creditCardRepository.GetByIdAsync(id);
 
             _mapper.Map(creditCardDto, creditCards);
 
-            await _creditCardRepository.UpdateAsync(creditCards);
+            await _creditCardRepository.UpdateAsync(creditCards, cancellationToken);
         }
 
         public async Task<Paginated<GetCreditCardDto>> GetPaginatedCreditCardsAsync(int page, int pageSize)
@@ -97,27 +105,27 @@ namespace CreditCard.Application.CreditCard.Services
             var creditCard = await _creditCardRepository.GetByIdAsync(id);
 
             if(creditCard == null)
-            {
                 throw new Exception("Tarjeta de crédito no encontrada");
-            }
 
             // Verifica si el avance de efectivo es menor o igual al límite de crédito
             if (creditCardCashAdvanceDto.CashAdvance > creditCard.CreditLimit)
-            {
                 throw new Exception("El avance de efectivo excede el límite de crédito");
-            }
 
             // Actualiza el avance de efectivo y el límite de crédito
             creditCard.CashAdvance += creditCardCashAdvanceDto.CashAdvance;
             creditCard.CreditLimit -= creditCardCashAdvanceDto.CashAdvance;
+            creditCard.BalanceToDate = creditCard.CashAdvance;
 
             // Guarda los cambios en la base de datos
             await _creditCardRepository.TransferCashAdvance(creditCard);
         }
 
-        public async Task<List<CreditCards>> GetByClientId(int clientId)
+        public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
         {
             var creditCards = await _creditCardRepository.GetCreditCardByClientId(clientId);
+
+            if (!creditCards.Any())
+                throw new Exception("No se pudo encontrar una tarjeta con este cliente");
 
             List<CreditCards> creditCardsList = new List<CreditCards>();
 
@@ -136,6 +144,9 @@ namespace CreditCard.Application.CreditCard.Services
                 cr.SecurityNumber = creditCard.SecurityNumber;
                 cr.IssuerName = creditCard.IssuerName;
                 cr.CreditLimit = creditCard.CreditLimit;
+                cr.CashAdvance = creditCard.CashAdvance;
+                cr.BalanceToDate = creditCard.BalanceToDate;
+                cr.OriginalValue = creditCard.OriginalValue;
 
                 creditCardsList.Add(cr);
             }

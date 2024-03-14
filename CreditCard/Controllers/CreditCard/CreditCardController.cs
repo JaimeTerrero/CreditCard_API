@@ -46,73 +46,137 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             return Ok(creditCard);
         }
 
-        [HttpPut("TransferCashAdvance/{id}")]
-        public async Task<ActionResult> TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity)
-        {
-            await _creditCardService.TransferCashAdvance(id, entity);
-
-            return NoContent();
-        }
-
-        [HttpPost("CreateCreditCard")]
-        public async Task<ActionResult> CreateCreditCard(CreditCardDto creditCardDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.Values);
-
-            //var validator = new CreditCardValidators(); // Crea una instancia del validador
-            //var validationResult = validator.Validate(creditCardDto);
-
-            //if (!validationResult.IsValid)
-            //{
-            //    foreach (var error in validationResult.Errors)
-            //    {
-            //        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-            //    }
-            //    return BadRequest(ModelState);
-            //}
-
-
-            var creditCard = await _creditCardService.Add(creditCardDto);
-
-            return Ok(creditCard);
-        }
-
         [HttpGet("GetCreditCardById/{id}")]
         public async Task<ActionResult> GetCreditCardById(Guid id)
         {
-            var creditCard = await _creditCardService.GetById(id);
+            if (id == Guid.Empty)
+            {
+                return BadRequest("El id proporcionado no es válido");
+            }
 
-            return Ok(creditCard);
+            try
+            {
+
+                var creditCard = await _creditCardService.GetById(id);
+
+                if(creditCard == null)
+                {
+                    return NotFound("No se pudo encontrar ninguna tarjeta");
+                }
+
+                return Ok(creditCard);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         [HttpGet("GetCreditCardByClientId/{clientId:int}")]
         public async Task<ActionResult> GetCreditCardByClientId(int clientId)
         {
-            var creditCard = await _creditCardService.GetByClientId(clientId);
-
-            if(creditCard == null)
+            if (clientId <= 0)
             {
-                return NotFound("No hay ningún cliente con ese Id");
+                return BadRequest("El id del cliente proporcionado no es válido");
             }
 
-            return Ok(creditCard);
+            try
+            {
+                var creditCard = await _creditCardService.GetCreditCardByClientId(clientId);
+
+                if (creditCard == null)
+                {
+                    return NotFound("No se pudo encontrar ningún cliente con este Id");
+                }
+
+                return Ok(creditCard);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
-        [HttpPut("UpdateCreditCard/{id}")]
-        public async Task<ActionResult> UpdateCreditCard(Guid id, UpdateCreditCardDto creditCardDto)
-        {
-            await _creditCardService.Update(id, creditCardDto);
 
-            return NoContent();
+        [HttpPost("CreateCreditCard")]
+        public async Task<ActionResult> CreateCreditCard(CreditCardDto creditCardDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState.Values);
+
+                var creditCard = await _creditCardService.Add(creditCardDto);
+
+                return Ok(creditCard);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+        }
+
+        [HttpPut("TransferCashAdvance/{id}")]
+        public async Task<ActionResult> TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("El id proporcionado no es válido");
+            }
+
+            try
+            {
+                await _creditCardService.TransferCashAdvance(id, entity);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+
+        [HttpPut("UpdateCreditCard/{id}")]
+        public async Task<ActionResult> UpdateCreditCard(Guid id, UpdateCreditCardDto creditCardDto, CancellationToken cancellationToken)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("El id proporcionado no es válido");
+            }
+
+            try
+            {
+                await _creditCardService.Update(id, creditCardDto, cancellationToken);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         [HttpDelete("DeleteCreditCard/{id}")]
         public async Task<ActionResult> DeleteCreditCard(Guid id)
         {
-            await _creditCardService.Delete(id);
+            if (id == Guid.Empty)
+            {
+                return BadRequest("El id proporcionado no es válido");
+            }
 
-            return NoContent();
+            try
+            {
+                await _creditCardService.Delete(id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "No se pudo eliminar la tarjeta");
+            }
         }
+
     }
 }

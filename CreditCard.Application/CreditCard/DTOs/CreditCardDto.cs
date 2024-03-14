@@ -13,6 +13,5 @@ namespace CreditCard.Application.CreditCard.DTOs
         public string OwnerName { get; set; }
         public string IssuerName { get; set; }
         public long CreditLimit { get; set; }
-        public long CashAdvance { get; set; }
     }
 }
