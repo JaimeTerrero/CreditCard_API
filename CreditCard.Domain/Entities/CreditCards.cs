@@ -24,5 +24,6 @@ namespace CreditCard.Domain.Entities
         public bool Status { get; set; } = true;
         public long BalanceToDate { get; set; }
         public long OriginalValue { get; set; } // El valor original de la tarjeta de crédito
+        public long BalanceToCut { get; set; }
     }
 }

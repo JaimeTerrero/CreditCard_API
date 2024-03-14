@@ -14,17 +14,18 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
     public class CreditCardRepository : ICreditCardRepository
     {
         private readonly CreditCardDbContext _creditCardDbContext;
+        private readonly Random _random;
 
         public CreditCardRepository(CreditCardDbContext creditCardDbContext)
         {
             _creditCardDbContext = creditCardDbContext;
+            _random = new Random();
         }
 
         public async Task<CreditCards> AddAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
             creditCards.OriginalValue = creditCards.CreditLimit;
-            //creditCards.BalanceToDate = creditCards.CreditLimit;
-            creditCards.CardNumber = GenerateCreditCardNumber();
+            creditCards.CardNumber = await GenerateUniqueCreditCardNumber();
             creditCards.SecurityNumber = GenerateCVV();
             creditCards.CutoffDate = GenerateNextMonthCutoffDate();
             creditCards.PaymentDueDate = GeneratePaymentDueDate();
@@ -64,14 +65,6 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             await _creditCardDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public long CalculateAvailableWithOverdraft(long availableWithOverdraft)
-        {
-            double overdraftPercentage = 0.10; // 10% expressed as a decimal
-            long overdraftAmount = (long)(availableWithOverdraft * overdraftPercentage);
-            long overdraftSum = overdraftAmount + availableWithOverdraft;
-            return overdraftSum;
-        }
-
         public async Task<Paginated<CreditCards>> GetCreditCardsPaginatedAsync(IQueryable<CreditCards> queryable, int page, int pageSize)
         {
             var totalItems = await queryable.CountAsync();
@@ -106,29 +99,40 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return await _creditCardDbContext.Set<CreditCards>().Where(c => c.ClientId == clientId).ToListAsync();
         }
 
-        public static long GenerateCreditCardNumber()
+        #region generators
+
+        public long CalculateAvailableWithOverdraft(long availableWithOverdraft)
         {
-            Random random = new Random();
+            double overdraftPercentage = 0.10;
+            long overdraftAmount = (long)(availableWithOverdraft * overdraftPercentage);
+            long overdraftSum = overdraftAmount + availableWithOverdraft;
+            return overdraftSum;
+        }
+
+        public async Task<long> GenerateUniqueCreditCardNumber()
+        {
             long creditCardNumber = 0;
 
-            for (int i = 1; i < 16; i++)
+            do
             {
-                int digit = random.Next(1, 101);
-                creditCardNumber = creditCardNumber * 10 + digit;
-            }
+                for (int i = 1; i < 16; i++)
+                {
+                    int digit = _random.Next(1, 101);
+                    creditCardNumber = creditCardNumber * 10 + digit;
+                }
+            } while (await _creditCardDbContext.CreditCards.AnyAsync(c => c.CardNumber == creditCardNumber));
 
             return creditCardNumber;
         }
 
-        public static long GenerateCVV()
+
+        public long GenerateCVV()
         {
-            Random random = new Random();
             long cvvNumber = 0;
 
             for (int i = 1; i < 3; i++)
             {
-                // Genera un dígito aleatorio en el rango del 1 al 100
-                int digit = random.Next(1, 101);
+                int digit = _random.Next(1, 101);
                 cvvNumber = cvvNumber * 10 + digit;
             }
 
@@ -137,30 +141,23 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public DateTime GenerateNextMonthCutoffDate()
         {
-            // Obtener la fecha actual
             DateTime currentDate = DateTime.Now;
 
-            // Calcular el próximo mes
             DateTime nextMonth = currentDate.AddMonths(1);
 
-            // Establecer la fecha de corte en el mismo día del próximo mes
             DateTime statementCutoffDate = new DateTime(nextMonth.Year, nextMonth.Month, currentDate.Day);
 
             return statementCutoffDate;
         }
 
-        public static DateTime GeneratePaymentDueDate()
+        public DateTime GeneratePaymentDueDate()
         {
-            // Obtener la fecha actual
             DateTime currentDate = DateTime.Now;
 
-            // Calcular el próximo mes
             DateTime nextMonth = currentDate.AddMonths(1);
 
-            // Establecer la fecha de corte en el mismo día del próximo mes
             DateTime statementPaymentDueDate = new DateTime(nextMonth.Year, nextMonth.Month, currentDate.Day);
 
-            // Sumar 20 días adicionales
             statementPaymentDueDate = statementPaymentDueDate.AddDays(20);
 
             return statementPaymentDueDate;
@@ -168,17 +165,16 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public DateTime GenerateExpirationDate()
         {
-            // Obtener la fecha actual
             DateTime currentDate = DateTime.Now;
 
-            // Calcular el próximo año
             DateTime nextYear = currentDate.AddYears(4);
 
-            // Establecer la fecha de corte en el mismo día del próximo mes
             DateTime statementExpirationDate = new DateTime(nextYear.Year, nextYear.Month, currentDate.Day);
 
             return statementExpirationDate;
         }
+
+        #endregion
 
     }
 }

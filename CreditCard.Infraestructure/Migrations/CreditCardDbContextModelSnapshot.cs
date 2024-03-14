@@ -34,6 +34,9 @@ namespace BankTech.CreditCard.Infraestructure.Migrations
                     b.Property<long>("AvailableWithOverdraft")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("BalanceToCut")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("BalanceToDate")
                         .HasColumnType("bigint");
 

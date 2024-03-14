@@ -69,6 +69,7 @@ namespace CreditCard.Application.CreditCard.Services
             cr.CashAdvance = creditCard.CashAdvance;
             cr.BalanceToDate = creditCard.BalanceToDate;
             cr.OriginalValue = creditCard.OriginalValue;
+            cr.BalanceToCut = creditCard.BalanceToCut;
 
             return cr;
         }
@@ -114,9 +115,9 @@ namespace CreditCard.Application.CreditCard.Services
             // Actualiza el avance de efectivo y el límite de crédito
             creditCard.CashAdvance += creditCardCashAdvanceDto.CashAdvance;
             creditCard.CreditLimit -= creditCardCashAdvanceDto.CashAdvance;
+            creditCard.AvailableWithOverdraft -= creditCardCashAdvanceDto.CashAdvance;
             creditCard.BalanceToDate = creditCard.CashAdvance;
 
-            // Guarda los cambios en la base de datos
             await _creditCardRepository.TransferCashAdvance(creditCard);
         }
 
@@ -147,6 +148,7 @@ namespace CreditCard.Application.CreditCard.Services
                 cr.CashAdvance = creditCard.CashAdvance;
                 cr.BalanceToDate = creditCard.BalanceToDate;
                 cr.OriginalValue = creditCard.OriginalValue;
+                cr.BalanceToCut = creditCard.BalanceToCut;
 
                 creditCardsList.Add(cr);
             }
