@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CreditCard.Application.CreditCard.Interfaces.CreditCard
 {
-    public interface ICreditCardService : IService<CreditCards, CreditCardDto, UpdateCreditCardDto>
+    public interface ICreditCardService : IService<CreditCards, CreditCardDto, UpdateCreditCardDto, CreditCardResponseDto>
     {
         Task<Paginated<GetCreditCardDto>> GetPaginatedCreditCardsAsync(int page, int pageSize);
         Task<List<CreditCards>> GetCreditCardByClientId(int clientId);

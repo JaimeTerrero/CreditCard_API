@@ -19,5 +19,9 @@ namespace BankTech.CreditCard.Application.CreditCard.DTOs
         public long SecurityNumber { get; set; }
         public string IssuerName { get; set; }
         public long CreditLimit { get; set; }
+        public long CashAdvance { get; set; }
+        public bool Status { get; set; } = true;
+        public long BalanceToDate { get; set; }
+        public long OriginalValue { get; set; } // El valor original de la tarjeta de crédito
     }
 }

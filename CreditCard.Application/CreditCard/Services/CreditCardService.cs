@@ -25,11 +25,12 @@ namespace CreditCard.Application.CreditCard.Services
             _mapper = mapper;
         }
 
-        public async Task<CreditCards> Add(CreditCardDto creditCardDto)
+        public async Task<CreditCardResponseDto> Add(CreditCardDto creditCardDto)
         {
             var creditCard = _mapper.Map<CreditCards>(creditCardDto);
             await _creditCardRepository.AddAsync(creditCard);
-            return creditCard;
+            var creditCardResponse = _mapper.Map<CreditCardResponseDto>(creditCard);
+            return creditCardResponse;
         }
 
         public async Task Delete(Guid id)
@@ -105,21 +106,25 @@ namespace CreditCard.Application.CreditCard.Services
         {
             var creditCard = await _creditCardRepository.GetByIdAsync(id);
 
-            if(creditCard == null)
+            if (creditCard == null)
                 throw new Exception("Tarjeta de crédito no encontrada");
 
-            // Verifica si el avance de efectivo es menor o igual al límite de crédito
-            if (creditCardCashAdvanceDto.CashAdvance > creditCard.CreditLimit)
+            // Calcula el cargo adicional y lo convierte a long
+            var additionalCharge = (long)(creditCardCashAdvanceDto.CashAdvance * 0.05m);
+
+            // Verifica si el avance de efectivo más el cargo adicional es menor o igual al límite de crédito
+            if (creditCardCashAdvanceDto.CashAdvance + additionalCharge > creditCard.CreditLimit)
                 throw new Exception("El avance de efectivo excede el límite de crédito");
 
-            // Actualiza el avance de efectivo y el límite de crédito
-            creditCard.CashAdvance += creditCardCashAdvanceDto.CashAdvance;
-            creditCard.CreditLimit -= creditCardCashAdvanceDto.CashAdvance;
-            creditCard.AvailableWithOverdraft -= creditCardCashAdvanceDto.CashAdvance;
+            // Actualiza el avance de efectivo, el límite de crédito y el cargo adicional
+            creditCard.CashAdvance += creditCardCashAdvanceDto.CashAdvance + additionalCharge;
+            creditCard.CreditLimit -= creditCardCashAdvanceDto.CashAdvance + additionalCharge;
+            creditCard.AvailableWithOverdraft -= creditCardCashAdvanceDto.CashAdvance + additionalCharge;
             creditCard.BalanceToDate = creditCard.CashAdvance;
 
             await _creditCardRepository.TransferCashAdvance(creditCard);
         }
+
 
         public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
         {

@@ -38,14 +38,6 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             }
         }
 
-        [HttpGet("GetAllCreditCards")]
-        public async Task<ActionResult> GetAllCreditCards()
-        {
-            var creditCard = await _creditCardService.GetAll();
-
-            return Ok(creditCard);
-        }
-
         [HttpGet("GetCreditCardById/{id}")]
         public async Task<ActionResult> GetCreditCardById(Guid id)
         {
@@ -129,7 +121,7 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             {
                 await _creditCardService.TransferCashAdvance(id, entity);
 
-                return NoContent();
+                return Ok(entity);
             }
             catch (Exception ex)
             {
@@ -144,13 +136,13 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             if (id == Guid.Empty)
             {
                 return BadRequest("El id proporcionado no es válido");
-            }
+            }       
 
             try
             {
                 await _creditCardService.Update(id, creditCardDto, cancellationToken);
 
-                return NoContent();
+                return Ok(creditCardDto);
             }
             catch (Exception ex)
             {

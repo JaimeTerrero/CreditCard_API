@@ -24,6 +24,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public async Task<CreditCards> AddAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
+            creditCards.AccountNumber = GenerateBankAccountNumber();
             creditCards.OriginalValue = creditCards.CreditLimit;
             creditCards.CardNumber = await GenerateUniqueCreditCardNumber();
             creditCards.SecurityNumber = GenerateCVV();
@@ -99,6 +100,12 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return await _creditCardDbContext.Set<CreditCards>().Where(c => c.ClientId == clientId).ToListAsync();
         }
 
+        public async Task ChangeCreditCardStatus(CreditCards creditCards, CancellationToken cancellationToken = default)
+        {
+            _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
+            await _creditCardDbContext.SaveChangesAsync(cancellationToken);
+        }
+
         #region generators
 
         public long CalculateAvailableWithOverdraft(long availableWithOverdraft)
@@ -107,6 +114,15 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             long overdraftAmount = (long)(availableWithOverdraft * overdraftPercentage);
             long overdraftSum = overdraftAmount + availableWithOverdraft;
             return overdraftSum;
+        }
+
+        private long GenerateBankAccountNumber()
+        {
+            long minAccountNumber = 100000000;
+            long maxAccountNumber = 999999999;
+            long accountNumber = (long)(_random.NextDouble() * (maxAccountNumber - minAccountNumber) + minAccountNumber);
+
+            return accountNumber;
         }
 
         public async Task<long> GenerateUniqueCreditCardNumber()
@@ -128,15 +144,11 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public long GenerateCVV()
         {
-            long cvvNumber = 0;
+            int minCode = 100;
+            int maxCode = 999;
+            int secretCode = _random.Next(minCode, maxCode + 1);
 
-            for (int i = 1; i < 3; i++)
-            {
-                int digit = _random.Next(1, 101);
-                cvvNumber = cvvNumber * 10 + digit;
-            }
-
-            return cvvNumber;
+            return secretCode;
         }
 
         public DateTime GenerateNextMonthCutoffDate()

@@ -15,5 +15,6 @@ namespace CreditCard.Domain.Interfaces.Repositories.CreditCard
         IQueryable<CreditCards> GetAllCreditCardsQueryable();
         Task TransferCashAdvance(CreditCards creditCards, CancellationToken cancellationToken = default);
         Task<List<CreditCards>> GetCreditCardByClientId(int clientId);
+        Task ChangeCreditCardStatus(CreditCards creditCards, CancellationToken cancellationToken = default);
     }
 }

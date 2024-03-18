@@ -16,10 +16,6 @@ namespace BankTech.CreditCard.Application.CreditCard.Validators
                 .NotEmpty()
                 .WithMessage("El id del cliente es obligatorio");
 
-            RuleFor(x => x.AccountNumber)
-                .NotEmpty()
-                .WithMessage("El número de cuenta es obligatorio");
-
             RuleFor(x => x.OwnerName)
                 .NotEmpty()
                 .WithMessage("El nombre es obligatorio");
