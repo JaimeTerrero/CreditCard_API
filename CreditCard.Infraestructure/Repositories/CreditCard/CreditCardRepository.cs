@@ -26,7 +26,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
         {
             creditCards.AccountNumber = GenerateBankAccountNumber();
             creditCards.OriginalValue = creditCards.CreditLimit;
-            creditCards.CardNumber = await GenerateUniqueCreditCardNumber();
+            creditCards.CardNumber = await GenerateUniqueCreditCardNumber(creditCards.IssuerName);
             creditCards.SecurityNumber = GenerateCVV();
             creditCards.CutoffDate = GenerateNextMonthCutoffDate();
             creditCards.PaymentDueDate = GeneratePaymentDueDate();
@@ -125,21 +125,37 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return accountNumber;
         }
 
-        public async Task<long> GenerateUniqueCreditCardNumber()
+        public async Task<long> GenerateUniqueCreditCardNumber(string issuerName)
         {
             long creditCardNumber = 0;
+            int startDigit = 0;
+
+            if (issuerName == "Visa")
+            {
+                startDigit = 4;
+            }
+            else if (issuerName == "MasterCard")
+            {
+                startDigit = _random.Next(51, 56);
+            }
+            else if (issuerName == "American Express")
+            {
+                startDigit = 37;
+            }
 
             do
             {
-                for (int i = 1; i < 16; i++)
+                creditCardNumber = startDigit;
+                for (int i = 0; i < 16 - startDigit.ToString().Length; i++)
                 {
-                    int digit = _random.Next(1, 101);
+                    int digit = _random.Next(0, 10);
                     creditCardNumber = creditCardNumber * 10 + digit;
                 }
             } while (await _creditCardDbContext.CreditCards.AnyAsync(c => c.CardNumber == creditCardNumber));
 
             return creditCardNumber;
         }
+
 
 
         public long GenerateCVV()

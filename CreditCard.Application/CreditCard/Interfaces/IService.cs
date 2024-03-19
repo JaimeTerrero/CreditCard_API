@@ -15,7 +15,7 @@ namespace CreditCard.Application.CreditCard.Interfaces
         Task<ResponseDto> Add(EntityDto entity);
         Task Update(Guid id, UpdateEntityDto entity, CancellationToken cancellationToken);
         Task Delete(Guid id);
-        Task<Entity> GetById(Guid id);
+        Task<ResponseDto> GetById(Guid id);
         Task<List<Entity>> GetAll();
         Task TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity);
     }

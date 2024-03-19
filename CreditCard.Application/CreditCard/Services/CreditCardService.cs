@@ -45,7 +45,7 @@ namespace CreditCard.Application.CreditCard.Services
             return creditCardList;
         }
 
-        public async Task<CreditCards> GetById(Guid id)
+        public async Task<CreditCardResponseDto> GetById(Guid id)
         {
             var creditCard = await _creditCardRepository.GetByIdAsync(id);
 
@@ -54,11 +54,10 @@ namespace CreditCard.Application.CreditCard.Services
                 throw new Exception("Tarjeta de crédito no encontrada");
             }
 
-            CreditCards cr = new();
+            CreditCardResponseDto cr = new();
             cr.Id = creditCard.Id;
             cr.ClientId = creditCard.ClientId;
             cr.AccountNumber = creditCard.AccountNumber;
-            cr.OwnerName = creditCard.OwnerName;
             cr.CardNumber = creditCard.CardNumber;
             cr.ExpirationDate = creditCard.ExpirationDate;
             cr.CutoffDate = creditCard.CutoffDate;
@@ -69,7 +68,6 @@ namespace CreditCard.Application.CreditCard.Services
             cr.CreditLimit = creditCard.CreditLimit;
             cr.CashAdvance = creditCard.CashAdvance;
             cr.BalanceToDate = creditCard.BalanceToDate;
-            cr.OriginalValue = creditCard.OriginalValue;
             cr.BalanceToCut = creditCard.BalanceToCut;
 
             return cr;
@@ -126,22 +124,21 @@ namespace CreditCard.Application.CreditCard.Services
         }
 
 
-        public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
+        public async Task<List<CreditCardResponseDto>> GetCreditCardByClientId(int clientId)
         {
             var creditCards = await _creditCardRepository.GetCreditCardByClientId(clientId);
 
             if (!creditCards.Any())
-                throw new Exception("No se pudo encontrar una tarjeta con este cliente");
+                throw new Exception("No se pudo encontrar una tarjeta asociada a este cliente");
 
-            List<CreditCards> creditCardsList = new List<CreditCards>();
+            List<CreditCardResponseDto> creditCardsList = new List<CreditCardResponseDto>();
 
             foreach (var creditCard in creditCards)
             {
-                CreditCards cr = new();
+                CreditCardResponseDto cr = new();
                 cr.Id = creditCard.Id;
                 cr.ClientId = creditCard.ClientId;
                 cr.AccountNumber = creditCard.AccountNumber;
-                cr.OwnerName = creditCard.OwnerName;
                 cr.CardNumber = creditCard.CardNumber;
                 cr.ExpirationDate = creditCard.ExpirationDate;
                 cr.CutoffDate = creditCard.CutoffDate;
@@ -152,7 +149,6 @@ namespace CreditCard.Application.CreditCard.Services
                 cr.CreditLimit = creditCard.CreditLimit;
                 cr.CashAdvance = creditCard.CashAdvance;
                 cr.BalanceToDate = creditCard.BalanceToDate;
-                cr.OriginalValue = creditCard.OriginalValue;
                 cr.BalanceToCut = creditCard.BalanceToCut;
 
                 creditCardsList.Add(cr);

@@ -16,7 +16,7 @@ namespace CreditCard.Infraestructure.Mappings
         {
             CreateMap<CreditCardDto, CreditCards>();
 
-            CreateMap<CreditCards, CreditCardResponseDto>();
+            CreateMap<CreditCards, CreditCardResponseDto>().ReverseMap();
 
             CreateMap<UpdateCreditCardDto, CreditCards>();
 

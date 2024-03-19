@@ -80,10 +80,6 @@ namespace BankTech.CreditCard.Infraestructure.Migrations
                     b.Property<long>("OriginalValue")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("OwnerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("PaymentDueDate")
                         .HasColumnType("datetime2");
 

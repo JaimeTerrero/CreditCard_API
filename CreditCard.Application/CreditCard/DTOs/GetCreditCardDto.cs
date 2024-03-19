@@ -10,7 +10,6 @@ namespace BankTech.CreditCard.Application.CreditCard.DTOs
     {
         public Guid Id { get; set; }
         public int ClientId { get; set; }
-        public string OwnerName { get; set; }
         public long CardNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
         public DateTime CutoffDate { get; set; }
@@ -22,6 +21,5 @@ namespace BankTech.CreditCard.Application.CreditCard.DTOs
         public long CashAdvance { get; set; }
         public bool Status { get; set; } = true;
         public long BalanceToDate { get; set; }
-        public long OriginalValue { get; set; } // El valor original de la tarjeta de crédito
     }
 }
