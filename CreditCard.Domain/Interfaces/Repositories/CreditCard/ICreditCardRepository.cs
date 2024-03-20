@@ -13,8 +13,8 @@ namespace CreditCard.Domain.Interfaces.Repositories.CreditCard
     {
         Task<Paginated<CreditCards>> GetCreditCardsPaginatedAsync(IQueryable<CreditCards> queryable, int page, int pageSize);
         IQueryable<CreditCards> GetAllCreditCardsQueryable();
-        Task TransferCashAdvance(CreditCards creditCards, CancellationToken cancellationToken = default);
-        Task<List<CreditCards>> GetCreditCardByClientId(int clientId);
-        Task ChangeCreditCardStatus(CreditCards creditCards, CancellationToken cancellationToken = default);
+        Task TransferCashAdvanceAsync(CreditCards creditCards, CancellationToken cancellationToken = default);
+        Task<List<CreditCards>> GetCreditCardByClientIdAsync(int clientId);
+        Task ChangeCreditCardStatusAsync(CreditCards creditCards, CancellationToken cancellationToken = default);
     }
 }

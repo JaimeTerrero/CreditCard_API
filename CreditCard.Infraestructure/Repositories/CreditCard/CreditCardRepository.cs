@@ -24,6 +24,7 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
 
         public async Task<CreditCards> AddAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
+            creditCards.CreditLimit = creditCards.CreditLimit / 2;
             creditCards.AccountNumber = GenerateBankAccountNumber();
             creditCards.OriginalValue = creditCards.CreditLimit;
             creditCards.CardNumber = await GenerateUniqueCreditCardNumber(creditCards.IssuerName);
@@ -89,18 +90,18 @@ namespace CreditCard.Infraestructure.Repositories.CreditCard
             return _creditCardDbContext.Set<CreditCards>();
         }
 
-        public async Task TransferCashAdvance(CreditCards creditCards, CancellationToken cancellationToken)
+        public async Task TransferCashAdvanceAsync(CreditCards creditCards, CancellationToken cancellationToken)
         {
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
             await _creditCardDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<List<CreditCards>> GetCreditCardByClientId(int clientId)
+        public async Task<List<CreditCards>> GetCreditCardByClientIdAsync(int clientId)
         {
             return await _creditCardDbContext.Set<CreditCards>().Where(c => c.ClientId == clientId).ToListAsync();
         }
 
-        public async Task ChangeCreditCardStatus(CreditCards creditCards, CancellationToken cancellationToken = default)
+        public async Task ChangeCreditCardStatusAsync(CreditCards creditCards, CancellationToken cancellationToken = default)
         {
             _creditCardDbContext.Entry(creditCards).State = EntityState.Modified;
             await _creditCardDbContext.SaveChangesAsync(cancellationToken);

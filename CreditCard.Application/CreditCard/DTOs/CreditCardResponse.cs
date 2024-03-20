@@ -11,7 +11,7 @@ namespace BankTech.CreditCard.Application.CreditCard.DTOs
         public Guid Id { get; set; }
         public int ClientId { get; set; }
         public long AccountNumber { get; set; }
-        public long CardNumber { get; set; }
+        public string CardNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
         public DateTime CutoffDate { get; set; }
         public DateTime PaymentDueDate { get; set; }

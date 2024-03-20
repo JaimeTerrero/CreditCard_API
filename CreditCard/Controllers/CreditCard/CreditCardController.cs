@@ -150,6 +150,28 @@ namespace BankTech.CreditCard.Api.Controllers.CreditCard
             }
         }
 
+        [HttpPut("ChangeCreditCardStatus/{id}")]
+        public async Task<ActionResult> ChangeCreditCardStatus(Guid id, ChangeCreditCardStatusDto changeCreditCardStatusDto)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("El id proporcionado no es válido");
+            }
+
+            try
+            {
+                var creditCard = await _creditCardService.GetById(id);
+
+                await _creditCardService.ChangeCreditCardStatus(id, changeCreditCardStatusDto);
+
+                return Ok(creditCard);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
         [HttpDelete("DeleteCreditCard/{id}")]
         public async Task<ActionResult> DeleteCreditCard(Guid id)
         {

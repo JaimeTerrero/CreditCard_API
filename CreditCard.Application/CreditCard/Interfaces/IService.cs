@@ -18,5 +18,6 @@ namespace CreditCard.Application.CreditCard.Interfaces
         Task<ResponseDto> GetById(Guid id);
         Task<List<Entity>> GetAll();
         Task TransferCashAdvance(Guid id, CreditCardCashAdvanceDto entity);
+        Task ChangeCreditCardStatus(Guid id, ChangeCreditCardStatusDto changeCreditCardStatusDto);
     }
 }

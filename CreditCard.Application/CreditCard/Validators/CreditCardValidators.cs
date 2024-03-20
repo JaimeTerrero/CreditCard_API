@@ -22,7 +22,11 @@ namespace BankTech.CreditCard.Application.CreditCard.Validators
 
             RuleFor(x => x.CreditLimit)
                 .NotEmpty()
-                .WithMessage("Se debe de indicar el límite de crédito");
+                .WithMessage("Se debe de indicar el límite de crédito")
+                .GreaterThan(0)
+                .WithMessage("El monto no puede ser 0")
+                .LessThan(30001)
+                .WithMessage("El monto no puede ser mayor que RD$30,000");
         }
     }
 }
